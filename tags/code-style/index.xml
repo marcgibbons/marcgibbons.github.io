@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Marc Gibbons</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Marc Gibbons</description>
+    <title>Code Style on Marc Gibbons</title>
+    <link>/tags/code-style/</link>
+    <description>Recent content in Code Style on Marc Gibbons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 Sep 2017 08:00:00 -0400</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/code-style/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,18 +18,6 @@
       
       <guid>/post/mind-your-brackets/</guid>
       <description>Those who work with me know that I am an advocate of 80 character line limits. This comes naturally as a Python developer and I apply the same limit to Javascript, HTML, Dockerfiles, Markdown, etc. This post won&amp;rsquo;t try to convince you to respect the 80 char limit (though you should), it will cover one of the main challenges of writing code with a length constraint: What do I do when I reach the end of the line and I still have code to write?</description>
-    </item>
-    
-    <item>
-      <title>Hello World!</title>
-      <link>/post/hello-world/</link>
-      <pubDate>Thu, 24 Aug 2017 10:29:12 -0400</pubDate>
-      
-      <guid>/post/hello-world/</guid>
-      <description>At last, I have published a blog.
-Here, I will chronicle (and rant) about code quality, software design, and most importantly, BBQ.
-As developers, we learn new things every day, and I think it&amp;rsquo;s important to record these findings, call out the good, the bad and the ugly in the hope of helping others, or even, our future selves.
-Enjoy!</description>
     </item>
     
   </channel>

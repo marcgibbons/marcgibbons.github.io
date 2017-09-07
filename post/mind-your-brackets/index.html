@@ -1,0 +1,448 @@
+    <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Marc Gibbons">
+		<meta name="description" content="Blog Description">
+		<meta name="generator" content="Hugo 0.26" />
+		<title>Mind Your Brackets &middot; Marc Gibbons</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/post'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        Mind Your Brackets
+                    </h1>
+                    <h2 class="headline">
+                    Sep 7, 2017 08:00
+                    · 1466 words
+                    · 7 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="/tags/code-style">code style</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                <section id="post-body">
+                    
+
+<p>Those who work with me know that I am an advocate of 80 character line limits.
+This comes naturally as a Python developer and I apply the same limit
+to Javascript, HTML, Dockerfiles, Markdown, etc. This post won&rsquo;t
+try to convince you to respect the 80 char limit (though you should), it will
+cover one of the main challenges of writing code with a length constraint:
+<strong>What do I do when I reach the end of the line and I still have code
+to write?</strong></p>
+
+<p>How should long dictionaries, lists, tuples and lengthy function arguments be
+handled? Do you simply hit enter at the end of the line and hope for
+the best?</p>
+
+<p>The answer is obviously no, yet developers, myself included, often struggle
+or overlook the importance of practising consistent line continuation
+techniques and the impact on overall readability and health of a codebase.</p>
+
+<p>Style guides typically don&rsquo;t help us answer these questions or give us a clear
+pattern, so below are 3 rules which capture well continued code.</p>
+
+<h1 id="the-rules">The rules</h1>
+
+<ol>
+<li><p><strong>Balance the brackets</strong>. Brackets and parentheses should be visually
+symmetric and easily identifiable.</p></li>
+
+<li><p><strong>Avoid unnecessary identation</strong>. Deep indentation decreases readability.</p></li>
+
+<li><p><strong>Put every element on its own line</strong>. This makes it faster to read, and
+easier to maintain lists.</p></li>
+</ol>
+
+<hr />
+
+<h2 id="1-balance-the-brackets">1. Balance the brackets</h2>
+
+<p>When spanning multiple lines, the <strong>opening bracket</strong> should be the <strong>final
+character</strong> of the row and the <strong>closing bracket</strong> should be on a <strong>new line</strong>
+and match the indentation of the first character on the line containing the
+opening bracket.</p>
+
+<pre><code>// Good
+if (something) {
+    console.log('fizz');
+}
+
+// Bad
+if (something) {
+    console.log('fizz'); }
+</code></pre>
+
+<p>This should be a familiar concept and standard practice in many languages, yet
+we overlook this detail when calling functions with long lists of arguments, or
+when defining arrays, dictionaries and tuples. The symmetry provided by
+indentation and the isolation of the brackets helps our eyes delineate
+different blocks of code.</p>
+
+<p>Consider the following example:</p>
+
+<pre><code class="language-python"># Bad
+cities = [
+    {'id': 1, 'name': 'Montreal'},
+    {'id': 2, 'name': 'New York'}]
+</code></pre>
+
+<p>Here, like in the earlier JS example, the closing bracket is out-of-balance
+in relation to the opening one. Even in this short snippet, the <code>cities</code>
+list feels like it is dangling uncomfortably.</p>
+
+<pre><code class="language-python"># Good
+cities = [
+    {'id': 1, 'name': 'Montreal'},
+    {'id': 2, 'name': 'New York'}
+]
+</code></pre>
+
+<p>This next example demonstrates a confusing chain of closing parentheses
+following the choices keyword-argument.</p>
+
+<pre><code class="language-python"># Bad
+country = models.CharField(
+    null=True,
+    blank=True,
+    help_text='The name of the country',
+    choices=((1, 'Canada'),
+             (2, 'US')))
+city = models.CharField(...)
+</code></pre>
+
+<p>At a quick glance, it is difficult to match the closing parentheses with
+their opening ones. By following the if/else example earlier, let&rsquo;s place
+the opening parentheses at the end of each declarative line, and the closing
+ones is on their own, outdented lines.</p>
+
+<pre><code class="language-python"># Good
+country = models.CharField(
+    null=True,
+    blank=True,
+    help_text='The name of the country',
+    choices=(
+        (1, 'Canada'),
+        (2, 'US')
+    )
+)
+city = models.CharField(...)
+</code></pre>
+
+<p>While this revised snippet does add 2 extra lines of code, we can now
+identify the beginning and end of the <code>CharField</code> arguments
+and of the <code>choices</code> tuple.</p>
+
+<hr />
+
+<h2 id="2-avoid-unnecessary-indentation">2. Avoid unnecessary indentation</h2>
+
+<p><strong>Always put the first element/argument on a new line, never after an opening
+bracket.</strong></p>
+
+<p>The first rule pretty much achieves this, since we end lines by an opening
+bracket, not by an argument, yet the rationale is different.</p>
+
+<p>Let&rsquo;s consider the following statement from the Zen of Python (which is always
+available by typing <code>import this</code> into the python interpreter):</p>
+
+<blockquote>
+<p>Flat is better than nested</p>
+</blockquote>
+
+<p>Flat code tends to be easier to read than nested in part because it encourages
+a simpler structure. Flat code also tends to be less indented, and therefore
+more readable as the eye has less distance to travel.</p>
+
+<p>Returning early from functions, or raising exceptions early is a good way to
+to avoid nesting and keep indentation at a minimum, but it is still easy
+to introduce unnecessary hanging indents to code. One culprit is the argument
+following the opening bracket on the same line.</p>
+
+<pre><code># Bad:
+queryset = MyVerboseModelName.objects.filter(some_property=some_value,
+                                             something_else=None,
+                                             some_other_property=other_value)
+
+
+#   #   #   #   #   #   #   #   #   #   #   #|  &lt;- 45 cols wasted !!
+</code></pre>
+
+<p>The code above is awkward. The eye has to travel far, particularly within the
+context of other deeply nested code.</p>
+
+<pre><code># Worse:
+queryset = MyVerboseModelName.objects.filter(some_property=some_value,
+                                             something_else=None,
+                                             some_other_property=other_value)
+queryset2 = MyOtherClass.objects.filter(fizz='buzz',
+                                        foo='bar')
+
+</code></pre>
+
+<p>By putting each element on its own line, unnecessary indentation
+is avoided.</p>
+
+<pre><code class="language-python"># Good
+queryset = MyVerboseModelName.objects.filter(
+    some_property=some_value,
+    something_else=None,
+    some_other_property=other_value
+)
+queryset2 = MyOtherClass.objects.filter(
+    fizz='buzz',
+    foo='bar'
+)
+#  ♥‿♥
+</code></pre>
+
+<p>Now, back to our &ldquo;bad&rdquo; example. Let&rsquo;s see why, on top of being hard to read,
+this code is also hard to maintain.</p>
+
+<pre><code># Bad:
+queryset = MyVerboseModelName.objects.filter(some_property=some_value,
+                                             something_else=None,
+                                             some_other_property=other_value)
+</code></pre>
+
+<p>Say we want to rename <code>queryset</code> to <code>q</code>; what happens to the indentation of the
+following lines?</p>
+
+<pre><code># Bad
+q = MyVerboseModelName.objects.filter(some_property=some_value,
+                                             something_else=None,
+                                             some_other_property=other_value)
+#   #   #   #   #   #   #   #   #   #  ..... &lt;- Invalid indentation!
+</code></pre>
+
+<p>The following arguments are now improperly indented, and we now have to touch 3
+lines of code rather than just one. This leads to noisy and confusing diffs,
+and increases the risk of unnecessary merge conflicts should these lines be
+modified in another branch.</p>
+
+<p>By placing the first argument <code>some_property</code> on its own line, changes to the
+variable named <code>q</code> will only affect one line.</p>
+
+<pre><code># Good
+queryset = MyVerboseModelName.objects.filter(
+    ...
+)
+
+q = MyVerboseModelName.objects.filter(
+    ...  # Always the same indentation level
+)
+</code></pre>
+
+<hr />
+
+<h2 id="3-put-every-element-on-its-own-line">3. Put every element on its own line</h2>
+
+<p>Putting each element on its own line tremendously improves readability and
+code maintainability. Vertical real-estate on the screen is cheap,
+horizontal space is limited.</p>
+
+<pre><code class="language-python"># Bad
+fields = ('first_name', 'last_name', 'primary_phone', 'secondary_phone',
+          'fax', 'company_name', 'address', 'address2', 'city', 'state',
+          'country', 'email')
+</code></pre>
+
+<p>Sure, this code it fits within 80 chars, but this code is problematic for the
+following reasons:</p>
+
+<ol>
+<li><p>It is difficult / slow to read</p>
+
+<p>How do you typically write a grocery list or a todo list? Do you list your
+elements as though they form a sentence in a paragraph, or do put every
+item on its own line?</p>
+
+<p>I&rsquo;d argue most people put each of their list items on their own line, and
+that this format is more readable.</p>
+
+<p>The same applies to code!</p></li>
+
+<li><p>It is difficult to maintain.</p>
+
+<p>Say you are required to add a new field to the list called <code>middle_name</code>
+and place it between <code>first_name</code> and <code>last_name</code>. Do you simply insert it?</p>
+
+<p>What if you have to obey the 79-char limit and this new field now
+causes you to exceed the maximum line length? Do edit the entire list to
+make it fit &ndash; in this case, 3 lines?</p>
+
+<p>What if someone on your team also has an item to add to the list and also
+rearranges the placement of each item? Hello difficult-to-fix merge
+conflict!</p></li>
+</ol>
+
+<p>The solution? <strong>Put every item on its own line.</strong></p>
+
+<pre><code>fields = (
+    'first_name',
+    'last_name',
+    'primary_phone',
+    'secondary_phone',
+    'fax',
+    'company_name',
+    'address',
+    'address2',
+    'city',
+    'state',
+    'country',
+    'email'
+)
+</code></pre>
+
+<p>Most of these examples are Python, but this works well in other languages and
+even in HTML, particularly with elements having long lists of attributes.</p>
+
+<pre><code class="language-html">&lt;!-- Bad --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;city&quot;&gt;City&lt;/label&gt;
+  &lt;input name=&quot;city&quot; id=&quot;city&quot; class=&quot;really awesome text input&quot; type=&quot;text&quot; placeholder=&quot;Toronto&quot; value=&quot;Gotham&quot; required&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>In addition to the horrible experience of having to scroll horizontally to
+view then entire markup, changes to the <code>&lt;input&gt;</code> markup will generate
+a diff which is difficult to read. Code that is laborious to read makes
+it harder to catch mistakes during reviews and therefore, easier to introduce
+bugs.</p>
+
+<pre><code class="language-html">&lt;!-- Good --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;city&quot;&gt;City&lt;/label&gt;
+  &lt;input
+    name=&quot;city&quot;
+    id=&quot;city&quot;
+    class=&quot;really awesome text input&quot;
+    type=&quot;text&quot;
+    placeholder=&quot;Toronto&quot;
+    value=&quot;Gotham&quot;
+    required
+  &gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Placing every element on its own line allows us to view the <code>&lt;input&gt;</code> markup in
+its entirety. We can add, remove and modify attributes cleanly, and since the
+changes are isolated, comparing diffs becomes a more  pleasant experience.
+Your teammates will appreciate this when reviewing your pull requests!</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+
+<p>The objective of this post is to underline the importance of having a
+consistent approach to managing code that needs to span multiple lines.</p>
+
+<p>Take look at your own code, or a popular open source project and ask the
+following questions:</p>
+
+<ul>
+<li>How does the code flow?</li>
+<li>Is it easy to find opening and closing brackets?</li>
+<li>Is the code close to the left margin or is there a lot whitespace
+that causes your eyes to scan horizontally, or worse, force you to
+scroll horizontally?</li>
+<li>How are long lists and functions with lots of arguments organized?
+Are items placed on their own lines, or are they packed into a paragraph?</li>
+</ul>
+
+<p>Being mindful of the rules suggested in this post will help improve overall
+code readability and maintainability. Having an objective and methodological
+approach to organizing the code also takes the guess work out of splitting code
+onto multiple lines.</p>
+
+<p>Happy coding!</p>
+
+                </section>
+            </article>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://github.com/marcgibbons">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/marcgibb">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2017 <i class="fa fa-heart" aria-hidden="true"></i> Marc Gibbons
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+    </body>
+</html>

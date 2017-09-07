@@ -6,10 +6,19 @@
     <description>Recent content on Marc Gibbons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 24 Aug 2017 10:29:12 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 07 Sep 2017 08:00:00 -0400</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mind Your Brackets</title>
+      <link>/post/mind-your-brackets/</link>
+      <pubDate>Thu, 07 Sep 2017 08:00:00 -0400</pubDate>
+      
+      <guid>/post/mind-your-brackets/</guid>
+      <description>Those who work with me know that I am an advocate of 80 character line limits. This comes naturally as a Python developer and I apply the same limit to Javascript, HTML, Dockerfiles, Markdown, etc. This post won&amp;rsquo;t try to convince you to respect the 80 char limit (though you should), it will cover one of the main challenges of writing code with a length constraint: What do I do when I reach the end of the line and I still have code to write?</description>
+    </item>
     
     <item>
       <title>Hello World!</title>

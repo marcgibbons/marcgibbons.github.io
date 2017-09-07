@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Marc Gibbons</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Marc Gibbons</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 24 Aug 2017 10:29:12 -0400</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World!</title>
+      <link>/post/hello-world/</link>
+      <pubDate>Thu, 24 Aug 2017 10:29:12 -0400</pubDate>
+      
+      <guid>/post/hello-world/</guid>
+      <description>At last, I have published a blog.
+Here, I will chronicle (and rant) about code quality, software design, and most importantly, BBQ.
+As developers, we learn new things every day, and I think it&amp;rsquo;s important to record these findings, call out the good, the bad and the ugly in the hope of helping others, or even, our future selves.
+Enjoy!</description>
+    </item>
+    
+  </channel>
+</rss>

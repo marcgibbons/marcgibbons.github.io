@@ -6,10 +6,20 @@
     <description>Recent content on Marc Gibbons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Sep 2017 08:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 22 Sep 2017 18:03:49 -0400</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>New Project Checklist</title>
+      <link>/post/new-project-checklist/</link>
+      <pubDate>Fri, 22 Sep 2017 18:03:49 -0400</pubDate>
+      
+      <guid>/post/new-project-checklist/</guid>
+      <description>New projects are exciting. Green field. Carte blanche. They are an opportunity to do things the &amp;ldquo;right&amp;rdquo; way, upgrade to the latest versions, use a new framework and apply new design or development techniques.
+Starting a new project is also an enormous responsibility &amp;ndash; decisions made at this embryonic stage will have lasting benefits (or consequences) and it&amp;rsquo;s critical that sufficient effort be dedicated to achieve a modern, professional standard.</description>
+    </item>
     
     <item>
       <title>Mind Your Brackets</title>

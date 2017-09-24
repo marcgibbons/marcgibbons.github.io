@@ -1,0 +1,231 @@
+    <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Marc Gibbons">
+		<meta name="description" content="Marc Gibbons, Python/Django Software Developer.">
+		<meta name="generator" content="Hugo 0.26" />
+		<title>New Project Checklist &middot; Marc Gibbons</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/post'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        New Project Checklist
+                    </h1>
+                    <h2 class="headline">
+                    Sep 22, 2017 18:03
+                    · 748 words
+                    · 4 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="/tags/infrastructure">infrastructure</a>
+                          
+                              <a href="/tags/best-practices">best practices</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                <section id="post-body">
+                    
+
+<p>New projects are exciting. Green field. Carte blanche. They are an opportunity
+to do things the &ldquo;right&rdquo; way, upgrade to the latest versions, use a new
+framework and apply new design or development techniques.</p>
+
+<p>Starting a new project is also an enormous responsibility &ndash; decisions made at
+this embryonic stage will have lasting benefits (or consequences) and it&rsquo;s
+critical that sufficient effort be dedicated to achieve a modern,
+professional standard.</p>
+
+<p>The upfront cost of a good setup pays for itself in dividends, and it is our
+duty as software consultants to lay a solid foundation for our clients and
+to provide a pleasant development experience.</p>
+
+<p>Here is a quick checklist I&rsquo;ve composed of must-have&rsquo;s when setting up a new
+project.</p>
+
+<h3 id="the-environment-setup-is-fast-easy-and-repeatable">✔️  The environment setup is fast, easy and repeatable.</h3>
+
+<p>The development environment must be easy to set up. If your
+application has at least one dependency, such as a database, use something like
+<a href="http://marcgibbons.com" rel="external" target="_new">docker-compose
+</a> to manage and link various components. Provisioning and running the
+application on a  new should be limited to a few commands. The quality and
+efficacy of a project setup can objectively be judged by the amount of manual
+intervention required.</p>
+
+<h3 id="the-version-control-system-vcs-is-modern-and-is-hosted-by-a-quality-provider">✔️  The version control system (VCS) is modern and is hosted by a quality provider.</h3>
+
+<p>This seems like an obvious one, but from time to time, I run into newer
+projects using setup using dated VCS or less-than-ideal providers.
+Pick a widely-used and supported solution. Cost should not be a factor in this
+decision.</p>
+
+<h3 id="tests-and-code-linting-are-run-each-time-new-code-is-checked-in">✔️  Tests and code linting are run each time new code is checked in.</h3>
+
+<p>Set up a test suite immediately when setting up the project, as well as
+code-style and quality checks appropriate to the language used. Use a
+continuous-integration tool to automatically run these tests each time new code
+is pushed up, and if your version control host allows it, set the status on the
+commit as either pass or fail.</p>
+
+<p>Tests should always run quickly. If you have multiple test suites (e.g. unit
+tests, acceptance tests, etc.), configure separate jobs to allow tests to run
+in parallel.</p>
+
+<h3 id="code-coverage-is-measured-and-enforced">✔️  Code coverage is measured and enforced.</h3>
+
+<p>Code coverage should be analyzed as part of the test suite. Strive for 100%
+from the get-go, and have the CI fail commits which lower overall coverage.
+Full coverage ensures that all code gets executed (one way or another) and is
+useful to highlight unnecessary or dead code.</p>
+
+<h3 id="a-clear-branching-strategy-has-been-defined">✔️  A clear branching strategy has been defined.</h3>
+
+<p>Decide right away what the branching strategy is for the project, and include
+it in the project&rsquo;s README. Set up a default branch in version control for
+development. At a minimum, active development should be done in isolated feature
+branches. When working in a team, require a code review before the branch
+is merged into a main, stable, or development branch.</p>
+
+<p>If your application needs to adhere to a
+steady release schedule, a more complex branching strategy like this <a
+href="http://nvie.com/posts/a-successful-git-branching-model/" rel="external"
+target="_new">Git branching model</a> may be suitable. Try to keep it simple;
+your approach will evolve, particularly if paying users depend on a stable
+service. The point here is to define a process before development starts and
+be rigorous and disciplined in following it.</p>
+
+<h3 id="branches-are-protected">✔️  Branches are protected.</h3>
+
+<p>This is critical. At a minimum, Protect your main branches from accidental
+deletes and disallow force-pushes. In certain cases, it may be desirable
+to restrict merges to certain users.</p>
+
+<p>Ensure that branches are up-to-date with the target before merging. If the VCS
+host doesn&rsquo;t provide you with this feature, script it and have the CI reject
+a pull-request with an outdated branch. All tests must pass prior to merging
+code.</p>
+
+<h3 id="deployments-are-automated-and-use-vcs-as-a-trigger">✔️ Deployments are automated and use VCS as a trigger</h3>
+
+<p>Given that your branches are properly protected and that you have a clearly
+defined branching strategy, configure your VCS to emit a webhook, or, have your
+CI poll for changes on a specific branch, to trigger the deployment. The build
+should be fully automated to ensure consistency.</p>
+
+<h3 id="logging-monitoring-is-configured">✔️  Logging &amp; monitoring is configured.</h3>
+
+<p>Configure logging and server monitoring right away, not when you need them.</p>
+
+<hr />
+
+<p>Automation, safety checks, and repeatability are critical to robust projects.
+Developer confidence increases when chance is removed from the build and
+development process and can ultimately lead to a product with greater stability
+and less downtime than one requiring manual intervention and lacking automated
+testing.</p>
+
+<p>Clients and customers won&rsquo;t trust a product if its developers don&rsquo;t so it is
+critical that we build atop a solid foundation.</p>
+
+                </section>
+            </article>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://github.com/marcgibbons">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/marcgibb">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2017 <i class="fa fa-heart" aria-hidden="true"></i> Marc Gibbons
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-106912641-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>

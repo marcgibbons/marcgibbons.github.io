@@ -12,11 +12,29 @@
     
     
     <item>
+      <title>Best Practices</title>
+      <link>/tags/best-practices/</link>
+      <pubDate>Fri, 22 Sep 2017 18:03:49 -0400</pubDate>
+      
+      <guid>/tags/best-practices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Code Style</title>
       <link>/tags/code-style/</link>
       <pubDate>Thu, 07 Sep 2017 08:00:00 -0400</pubDate>
       
       <guid>/tags/code-style/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infrastructure</title>
+      <link>/tags/infrastructure/</link>
+      <pubDate>Fri, 22 Sep 2017 18:03:49 -0400</pubDate>
+      
+      <guid>/tags/infrastructure/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Marc Gibbons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Sep 2017 18:03:49 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 24 Sep 2017 14:04:30 -0400</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>When Not to User Docker</title>
+      <link>/post/when-not-to-user-docker/</link>
+      <pubDate>Sun, 24 Sep 2017 14:04:30 -0400</pubDate>
+      
+      <guid>/post/when-not-to-user-docker/</guid>
+      <description>Docker is a great tool, particularly for development environments on projects with complex dependencies: multiple databases, caches, message queues, asynchronous workers. Docker compose provides a great wrapper to link all these dependencies into a simple, developer-friendly API.
+There are some trade-offs: containers need to be rebuilt when package dependencies change, port forwarding and volume mounts can be akward, and when not running natively on a Linux host, performance tends to take a hit (e.</description>
+    </item>
     
     <item>
       <title>New Project Checklist</title>

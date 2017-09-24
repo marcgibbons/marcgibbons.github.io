@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/when-not-to-user-docker/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/new-project-checklist/</loc>
     <lastmod>2017-09-22T18:03:49-04:00</lastmod>
   </url>
@@ -45,20 +50,44 @@
   </url>
   
   <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/infrastructure/</loc>
     <lastmod>2017-09-22T18:03:49-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/tags/js/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/node/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
     <priority>0</priority>
   </url>
   

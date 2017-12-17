@@ -30,9 +30,18 @@
     </item>
     
     <item>
+      <title>Django</title>
+      <link>/tags/django/</link>
+      <pubDate>Sun, 17 Dec 2017 09:43:29 -0500</pubDate>
+      
+      <guid>/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>/tags/docker/</link>
-      <pubDate>Sun, 24 Sep 2017 14:04:30 -0400</pubDate>
+      <pubDate>Sun, 17 Dec 2017 09:43:29 -0500</pubDate>
       
       <guid>/tags/docker/</guid>
       <description></description>
@@ -71,6 +80,24 @@
       <pubDate>Sun, 24 Sep 2017 14:04:30 -0400</pubDate>
       
       <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selenium</title>
+      <link>/tags/selenium/</link>
+      <pubDate>Sun, 17 Dec 2017 09:43:29 -0500</pubDate>
+      
+      <guid>/tags/selenium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testing</title>
+      <link>/tags/testing/</link>
+      <pubDate>Sun, 17 Dec 2017 09:43:29 -0500</pubDate>
+      
+      <guid>/tags/testing/</guid>
       <description></description>
     </item>
     

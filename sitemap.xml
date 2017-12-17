@@ -55,8 +55,14 @@
   </url>
   
   <url>
+    <loc>/tags/django/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/docker/</loc>
-    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -93,6 +99,18 @@
   <url>
     <loc>/tags/python/</loc>
     <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/selenium/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/testing/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
     <priority>0</priority>
   </url>
   

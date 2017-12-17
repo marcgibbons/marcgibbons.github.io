@@ -1,0 +1,272 @@
+    <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Marc Gibbons">
+		<meta name="description" content="Marc Gibbons, Python/Django Software Developer.">
+		<meta name="generator" content="Hugo 0.26" />
+		<title>Selenium Tests in Django &amp; Docker &middot; Marc Gibbons</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/post'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        Selenium Tests in Django &amp; Docker
+                    </h1>
+                    <h2 class="headline">
+                    Dec 17, 2017 09:43
+                    · 505 words
+                    · 3 minutes read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                <section id="post-body">
+                    
+
+<p>Running Selenium tests in Django using Docker is an easy, convenient and
+repeatable strategy to run UI tests across multiple development and testing
+environments. It requires some light customization of the
+<code>StaticLiveServerTestCase</code> class, but once configured, the Selenium UI tests
+will seamlessly integrate into your existing test suite and dockerized CI
+build.</p>
+
+<p><a href="https://hub.docker.com/u/selenium/" target="_new" rel="external">SeleniumHQ</a>
+provides Docker images for Chrome and Firefox &ndash; if these browsers
+are sufficient for your UI testing needs, great! You can test against real
+browsers and avoid the cost of a third-party service subscription.</p>
+
+<p>If you are already familiar with Selenium tests in Django, the setup is very
+similar with the exception of a few caveats:</p>
+
+<ol>
+<li>Use the selenium <code>Remote</code> web driver to connect to the Docker container</li>
+<li>The <code>ALLOWED_HOSTS</code> setting is enforced during <code>LiveServerTestCase</code></li>
+<li>The Django test server must bind to <code>0.0.0.0</code> in order to allow the selenium
+docker container to connect.</li>
+</ol>
+
+<h1 id="how-to">How-To</h1>
+
+<p>For the full example, check out the <strong>example app</strong>:
+<br><a href="https://github.com/marcgibbons/django-selenium-docker">https://github.com/marcgibbons/django-selenium-docker</a></p>
+
+<p>The app uses docker-compose to link the Docker containers.</p>
+
+<h3 id="docker-compose-yml">docker-compose.yml</h3>
+
+<p>Under <code>services</code>, define a container called <code>selenium</code>. In this example, we&rsquo;ll
+use the <code>standalone-chrome-debug</code>container which gives us the ability to
+connect to the container remotely using VNC Viewer. This means we can gain
+access to the GUI to debug, inspect the DOM, JS console, etc.</p>
+
+<pre><code class="language-yaml">  selenium:
+    image: selenium/standalone-chrome-debug:3.7.1
+    ports:
+      - 4444:4444   # Selenium
+      - 5900:5900   # VNC server
+</code></pre>
+
+<p>Make sure you add a link to this container from the Django container:</p>
+
+<pre><code>  django:
+    ...
+    links:
+      - selenium
+    ...
+</code></pre>
+
+<h3 id="tests-py">tests.py</h3>
+
+<p>The following is a slightly modified version of the example provided in the
+Django LiveServerTestCase
+<a href="(https://docs.djangoproject.com/en/2.0/topics/testing/tools/#liveservertestcase" target="_new" rel="external">documentation.</a>
+Use this base class for all your Selenium test cases.</p>
+
+<pre><code class="language-python">import socket
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.test import override_settings, tag
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
+@override_settings(ALLOWED_HOSTS=['*'])  # Disable ALLOW_HOSTS
+class BaseTestCase(StaticLiveServerTestCase):
+    &quot;&quot;&quot;
+    Provides base test class which connects to the Docker
+    container running Selenium.
+    &quot;&quot;&quot;
+    host = '0.0.0.0'  # Bind to 0.0.0.0 to allow external access
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # Set host to externally accessible web server address
+        cls.host = socket.gethostbyname(socket.gethostname())
+
+        # Instantiate the remote WebDriver
+        cls.selenium = webdriver.Remote(
+            #  Set to: htttp://{selenium-container-name}:port/wd/hub
+            #  In our example, the container is named `selenium`
+            #  and runs on port 4444
+            command_executor='http://selenium:4444/wd/hub',
+            # Set to CHROME since we are using the Chrome container
+            desired_capabilities=DesiredCapabilities.CHROME,
+
+        )
+        cls.selenium.implicitly_wait(5)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super().tearDownClass()
+</code></pre>
+
+<h2 id="connecting-with-vnc-viewer">Connecting with VNC Viewer</h2>
+
+<p>This is the cool part. The SeleniumHQ containers with the <code>-debug</code> suffix
+run a VNC server to which we can connect from the host (i.e. remote desktop.)
+The setup is very easy.</p>
+
+<ol>
+<li><p>First, download and install <a href="https://www.realvnc.com/download/viewer" target="_new" rel="external">VNC Viewer</a>.</p></li>
+
+<li><p>Create a new connection to <code>0.0.0.0:5900</code>
+<img src="/static/images/selenium/new_connection.png" alt="" /></p></li>
+
+<li><p>Start the selenium container (<code>docker-compose start selenium</code>)</p></li>
+
+<li><p>Connect to container from VNC. The password is <code>secret</code>.
+<img src="/static/images/selenium/connect.png" alt="" /></p></li>
+
+<li><p>Run the test suite and watch the browser spin up!
+<img src="/static/images/selenium/test_run.gif" alt="" /></p></li>
+</ol>
+
+<h2 id="debugging">Debugging</h2>
+
+<p>Now that you have a remote connection established to the container, you can
+insert a breakpoint in your code (<code>pdb</code>) and have the ability to control
+the browser, use the console, etc. Awesome!</p>
+
+<p><img src="/static/images/selenium/test_debug.gif" alt="" /></p>
+
+<p>Enjoy!</p>
+
+<h2 id="credits">Credits</h2>
+
+<p>The Django TestCase configuration was pieced together from this
+<a href="https://stackoverflow.com/questions/44240139/run-liveservertestcase-from-docker-selenium-with-django-1-11" target="_new" rel="external">StackOverflow</a> article.</p>
+
+                </section>
+            </article>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'marcgibbons-1'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://github.com/marcgibbons">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/marcgibb">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2017 <i class="fa fa-heart" aria-hidden="true"></i> Marc Gibbons
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/" rel="external" target="_new">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus" rel="external" target="_new">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-106912641-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>

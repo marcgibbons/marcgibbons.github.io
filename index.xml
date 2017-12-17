@@ -6,10 +6,20 @@
     <description>Recent content on Marc Gibbons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Sep 2017 14:04:30 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 17 Dec 2017 09:43:29 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Selenium Tests in Django &amp; Docker</title>
+      <link>/post/selenium-in-docker/</link>
+      <pubDate>Sun, 17 Dec 2017 09:43:29 -0500</pubDate>
+      
+      <guid>/post/selenium-in-docker/</guid>
+      <description>Running Selenium tests in Django using Docker is an easy, convenient and repeatable strategy to run UI tests across multiple development and testing environments. It requires some light customization of the StaticLiveServerTestCase class, but once configured, the Selenium UI tests will seamlessly integrate into your existing test suite and dockerized CI build.
+SeleniumHQ provides Docker images for Chrome and Firefox &amp;ndash; if these browsers are sufficient for your UI testing needs, great!</description>
+    </item>
     
     <item>
       <title>When Not to User Docker</title>

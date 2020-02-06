@@ -3,8 +3,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/heroku-geo-django/</loc>
+    <lastmod>2020-02-06T10:07:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-02-06T10:07:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/django/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/selenium/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/selenium-in-docker/</loc>
     <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/testing/</loc>
+    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/js/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/node/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
   </url>
   
   <url>
@@ -13,8 +68,23 @@
   </url>
   
   <url>
+    <loc>/tags/best-practices/</loc>
+    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/infrastructure/</loc>
+    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/new-project-checklist/</loc>
     <lastmod>2017-09-22T18:03:49-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/code-style/</loc>
+    <lastmod>2017-09-07T08:00:00-04:00</lastmod>
   </url>
   
   <url>
@@ -33,85 +103,7 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2015-06-20T14:02:37+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/best-practices/</loc>
-    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/code-style/</loc>
-    <lastmod>2017-09-07T08:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/django/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/docker/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/infrastructure/</loc>
-    <lastmod>2017-09-22T18:03:49-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/js/</loc>
-    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/node/</loc>
-    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/python/</loc>
-    <lastmod>2017-09-24T14:04:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/selenium/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/testing/</loc>
-    <lastmod>2017-12-17T09:43:29-05:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

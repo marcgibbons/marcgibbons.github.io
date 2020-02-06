@@ -7,7 +7,7 @@
 		<meta name="author" content="Marc Gibbons">
 		<meta name="description" content="Marc Gibbons, Python/Django Software Developer.">
 		<meta name="generator" content="Hugo 0.58.3" />
-		<title>Hello World! &middot; Marc Gibbons</title>
+		<title>GeoDjango on Heroku in 2020 &middot; Marc Gibbons</title>
 		<link rel="shortcut icon" href="data:,">
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/highlight.css">
@@ -40,11 +40,11 @@
             <article class="post">
                 <header>
                     <h1>
-                        Hello World!
+                        GeoDjango on Heroku in 2020
                     </h1>
                     <h2 class="headline">
-                    Aug 24, 2017 10:29
-                    · 60 words
+                    Feb 6, 2020 10:07
+                    · 68 words
                     · 1 minute read
                       <span class="tags">
                       
@@ -53,16 +53,30 @@
                 </header>
                 
                 <section id="post-body">
-                    <p>At last, I have published a blog.</p>
+                    
 
-<p>Here, I will chronicle (and rant) about code quality, software design, and
-most importantly, BBQ.</p>
+<p>It&rsquo;s been a few years since I&rsquo;ve used GIS on Heroku. Here&rsquo;s a quick
+configuration guide to install GeoDjango dependencies on Heroku (without
+community buildpacks).</p>
 
-<p>As developers, we learn new things every day, and I think it&rsquo;s important to
-record these findings, call out the good, the bad and the ugly in the hope of
-helping others, or even, our future selves.</p>
+<h3 id="1-add-the-heroku-apt-buildpack">1.  Add the Heroku apt buildpack</h3>
 
-<p>Enjoy!</p>
+<pre><code class="language-bash">$ heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
+</code></pre>
+
+<h3 id="2-create-an-aptfile">2. Create an Aptfile</h3>
+
+<p>Create a file called <code>Aptfile</code> at the root-level of the project and add the
+following packages:</p>
+
+<pre><code class="language-text"># Aptfile
+libgeos-dev
+libproj-dev
+</code></pre>
+
+<h3 id="3-deploy">3. Deploy</h3>
+
+<p>That&rsquo;s it! Commit &amp; deploy.</p>
 
                 </section>
             </article>
